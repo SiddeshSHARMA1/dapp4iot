@@ -1,7 +1,12 @@
-import React from 'react';
+import React from "react";
+import DashBoardOverview from "../../Component/Dashboard/DashBoardOverview/DashboardOverview";
 
-export default function DashboardOverview() {
-  return <div>
-      <p>dashboard</p>
-  </div>;
+export default function DashboardOverview(props) {
+  //api calls
+
+  return (
+    <>
+      <DashBoardOverview />
+    </>
+  );
 }

@@ -6,17 +6,7 @@ export default function LoginOverview() {
       <p>login</p>
       <p>login</p>
       <p>login</p>
-      <p>login</p>
-      <p>login</p>
-      <p>login</p>
-      <p>login</p>
-      <p>login</p>
-      <p>login</p>
-      <p>login</p>
-      <p>login</p>
-      <p>login</p>
-      <p>login</p>
-      <p>login</p>
+      
     </div>
   );
 }
