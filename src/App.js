@@ -20,8 +20,7 @@ function App() {
         {/* login Page */}
         <Route path='/login' element={<LoginOverview />} />
         {/* dashboard */}
-        <Route path='/dashboard' element={<DashboardOverview />}/>
-
+        <Route path='/dashboard' element={<DashboardOverview />}/>                                                                                                                                                                                                                                                                                                                                                                         
 
       </Routes>
     </div>
