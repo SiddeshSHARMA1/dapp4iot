@@ -17,6 +17,18 @@ export default function DevicesOverview({ devices }) {
           <p style={{ fontWeight: "600" }}>Device 1</p>
         </div>
       ))}
+      <div
+        style={{
+          width: "170px",
+          height: "80px",
+          backgroundColor: 'darksalmon',
+          borderRadius: "10px",
+          padding: "1px",
+          margin: "0px 5px",
+        }}
+      >
+        <p style={{ fontWeight: "600", marginLeft: '40px' }}>New Device +</p>
+      </div>
     </div>
   );
 }
