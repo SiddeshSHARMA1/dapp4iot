@@ -1,8 +1,12 @@
-import React from "react";
+import { Modal } from "@material-ui/core";
+import React, { useState } from "react";
 import DevicesOverview from "../../Devices/DevicesOverview";
+import AddDeviceModal from "../DashboardModal/AddDevice.component";
 import Navbar from "../DashboardNav/Navbar";
 
 export default function DashBoardOverview() {
+  const [isAddDeviceModalOpen, setIsAddDeviceModalOpen] = useState(false);
+
   return (
     <>
       <div
@@ -18,20 +22,34 @@ export default function DashBoardOverview() {
           <Navbar />
         </div>
         <div style={{ color: "black", width: "85%", fontWeight: "500" }}>
-          <div style={{ height: '180px'}}>
+          <div style={{ height: "180px" }}>
             <p>title</p>
           </div>
-          <div style={{margin: '15px'}}>
+          <div style={{ margin: "15px" }}>
             <h1>Devices</h1>
             <DevicesOverview
               devices={[
                 { id: 1, name: "d1" },
                 { id: 2, name: "d2" },
               ]}
+              onAddDeviceModalOpen={() => setIsAddDeviceModalOpen(true)}
             />
           </div>
         </div>
       </div>
+      <Modal
+        open={isAddDeviceModalOpen}
+        onClose={() => setIsAddDeviceModalOpen(false)}
+        style={{
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <AddDeviceModal />
+      </Modal>
     </>
   );
 }
