@@ -4,18 +4,15 @@ import {
   GoogleAuthProvider,
   getAuth,
   signInWithPopup,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  sendPasswordResetEmail,
   signOut,
 } from "firebase/auth";
 import {
   getFirestore,
   query,
   getDocs,
-  collection,
   where,
   addDoc,
+  collection,
 } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -47,6 +44,7 @@ export const signInWithGoogle = async () => {
     document.cookie = `authToken=${await user.getIdToken()}`;
     const q = query(collection(db, "users"), where("uid", "==", user.uid));
     const docs = await getDocs(q);
+    console.log(docs);
     if (docs.docs.length === 0) {
       await addDoc(collection(db, "users"), {
         uid: user.uid,
@@ -64,5 +62,9 @@ export const logOut = () => {
   signOut(auth);
 }
 
+export const queryServer = async() => {
+  const docs = await getDocs(collection(db, 'users'));
+  docs.docs.map((data) => console.log(data.data()))
+}
 
 
