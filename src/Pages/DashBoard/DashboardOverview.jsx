@@ -52,6 +52,8 @@ export default function DashboardOverview({ loggedInUser }) {
         devices={devices}
         currentUser={loggedInUser}
         onDeviceAdd={AddDevice}
+        setRefreshCounter={setRefreshCounter}
+        refreshCounter={refreshCounter}
       />
     </>
   ) : (

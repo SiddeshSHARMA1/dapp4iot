@@ -14,6 +14,8 @@ import {
   where,
   addDoc,
   collection,
+  deleteDoc,
+  doc
 } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -87,3 +89,14 @@ export const addDevice = async (deviceMeta) => {
     console.log('error adding device', error);
   }
 }
+
+export const removeDevice = async(deviceId) => {
+  const q = query(collection(db, "devices"), where("deviceId", "==", deviceId));
+  const {docs} = await getDocs(q);
+  if(docs.length){
+    const docRef = doc(db, 'devices', docs[0].id);
+    await deleteDoc(docRef);
+  }
+  
+}
+
