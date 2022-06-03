@@ -6,6 +6,7 @@ export default function AddDeviceModal({
   setIsAddDeviceModalOpen,
 }) {
   const [name, setName] = useState("");
+  const [id, setId] = useState("");
   return (
     <div
       style={{
@@ -29,7 +30,20 @@ export default function AddDeviceModal({
         }}
       >
         <span style={{ marginTop: "20px" }}>Device Name</span>
-        <TextField onChange={(event) => setName(event.target.value)} />
+        <TextField
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+        }}
+      >
+        <span style={{ marginTop: "20px" }}>Device Id</span>
+        <TextField value={id} onChange={(event) => setId(event.target.value)} />
       </div>
       <div>
         <Button
