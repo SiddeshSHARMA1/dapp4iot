@@ -1,7 +1,11 @@
 import { Button, TextField } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 
-export default function AddDeviceModal() {
+export default function AddDeviceModal({
+  onDeviceAdd,
+  setIsAddDeviceModalOpen,
+}) {
+  const [name, setName] = useState("");
   return (
     <div
       style={{
@@ -25,10 +29,17 @@ export default function AddDeviceModal() {
         }}
       >
         <span style={{ marginTop: "20px" }}>Device Name</span>
-        <TextField />
+        <TextField onChange={(event) => setName(event.target.value)} />
       </div>
       <div>
-        <Button>Submit</Button>
+        <Button
+          onClick={() => {
+            onDeviceAdd({ name: name });
+            setIsAddDeviceModalOpen(false);
+          }}
+        >
+          Submit
+        </Button>
       </div>
     </div>
   );

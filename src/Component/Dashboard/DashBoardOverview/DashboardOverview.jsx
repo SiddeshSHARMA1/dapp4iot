@@ -4,7 +4,11 @@ import DevicesOverview from "../../Devices/DevicesOverview";
 import AddDeviceModal from "../DashboardModal/AddDevice.component";
 import Navbar from "../DashboardNav/Navbar";
 
-export default function DashBoardOverview() {
+export default function DashBoardOverview({
+  devices,
+  currentUser,
+  onDeviceAdd,
+}) {
   const [isAddDeviceModalOpen, setIsAddDeviceModalOpen] = useState(false);
 
   return (
@@ -28,10 +32,7 @@ export default function DashBoardOverview() {
           <div style={{ margin: "15px" }}>
             <h1>Devices</h1>
             <DevicesOverview
-              devices={[
-                { id: 1, name: "d1" },
-                { id: 2, name: "d2" },
-              ]}
+              devices={devices}
               onAddDeviceModalOpen={() => setIsAddDeviceModalOpen(true)}
             />
           </div>
@@ -48,7 +49,11 @@ export default function DashBoardOverview() {
           justifyContent: "center",
         }}
       >
-        <AddDeviceModal />
+        <AddDeviceModal
+          setIsAddDeviceModalOpen={setIsAddDeviceModalOpen}
+          currentUser={currentUser}
+          onDeviceAdd={onDeviceAdd}
+        />
       </Modal>
     </>
   );
