@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import DashBoardOverview from "../../Component/Dashboard/DashBoardOverview/DashboardOverview";
 import { addDevice, getDevices } from "../../Utilities/firebase";
 
+
 export default function DashboardOverview({ loggedInUser }) {
   const [devices, setDevices] = useState([]);
   const [refreshCounter, setRefreshCounter] = useState(0);
@@ -16,7 +17,7 @@ export default function DashboardOverview({ loggedInUser }) {
   useEffect(() => {
     getDevices(loggedInUser.uid).then((res) => setDevices(res));
   }, [refreshCounter]);
-
+  
   function AddDevice(deviceMeta) {
     return new Promise((resolve, reject) => {
       try {

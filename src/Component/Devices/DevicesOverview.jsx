@@ -1,26 +1,16 @@
 import { Button } from "@material-ui/core";
 import React from "react";
 import { Plus } from "react-feather";
-import { watchDevice } from "../../Utilities/firebase";
+import { putDate, watchDevice } from "../../Utilities/firebase";
+import SingleDevice from "./SingleDevice.component";
 
 export default function DevicesOverview({ devices, onAddDeviceModalOpen }) {
   return (
     <div style={{ display: "flex" }}>
-    <Button onClick={() => watchDevice()}>sam</Button>
-      {devices.map((eachDevice) => (
-        <Button
-          style={{
-            width: "170px",
-            height: "80px",
-            backgroundColor: "wheat",
-            borderRadius: "10px",
-            padding: "1px",
-            margin: "0px 5px",
-          }}
-        >
-          <p style={{ fontWeight: "600" }}>{eachDevice.name || ''}</p>
-        </Button>
-      ))}
+      <Button onClick={() => putDate()}>push</Button>
+      {devices.map((eachDevice) => {
+        return <SingleDevice eachDevice={eachDevice} />;
+      })}
       <Button
         style={{
           width: "170px",

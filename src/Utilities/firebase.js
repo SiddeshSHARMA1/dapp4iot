@@ -15,9 +15,9 @@ import {
   addDoc,
   collection,
   deleteDoc,
-  doc
+  doc,
 } from "firebase/firestore";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, set, get, child } from "firebase/database";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -101,9 +101,30 @@ export const removeDevice = async (deviceId) => {
   }
 };
 
-const databaseRef = ref(realTimeDB, "");
-export const watchDevice = (id, cb) => {
-  onValue(databaseRef, (snapshot) => {
-    console.log("cb update", snapshot.val());
-  });
+export const watchDevice = (id = 788984, cb) => {
+  const databaseRef = ref(realTimeDB, "devices");
+
+  setInterval(() => {
+    get(databaseRef).then((snapshot) => {
+      const isAct = Date.now() - snapshot.val()[788984].deviceState < 8000;
+      if (cb) {
+        cb(isAct);
+      }
+    });
+  }, 10000);
+  // onValue(databaseRef, (snapshot) => {
+  //     const isAct = Date.now() - snapshot.val()[788984].deviceState < 8000;
+  //     if (cb) {
+  //       cb(isAct);
+  //     }
+  //     const isAct = Date.now() - snapshot.val()[788984].deviceState < 8000;
+  //     if (cb) {
+  //       cb(isAct);
+  //     }
+  // });
+};
+
+export const putDate = (id = 788984) => {
+  const databaseRef = ref(realTimeDB, `devices/${id}/deviceState`);
+  set(databaseRef, Date.now());
 };
