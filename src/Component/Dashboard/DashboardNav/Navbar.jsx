@@ -7,8 +7,11 @@ import {
   Settings,
   StatsSvg,
 } from "../../Utils/AllSvg";
+import { useNavigate } from "react-router";
+import { logOut } from "../../../Utilities/firebase";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   return (
     <>
       <div
@@ -90,6 +93,10 @@ export default function Navbar() {
                 textTransform: "none",
                 fontSize: "12px",
                 margin: "10px 0px",
+              }}
+              onClick={() => {
+                logOut();
+                navigate("/");
               }}
             >
               <Logout />

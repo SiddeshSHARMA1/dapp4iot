@@ -1,34 +1,37 @@
+import { Button } from "@material-ui/core";
 import React from "react";
+import { Plus } from "react-feather";
 
-export default function DevicesOverview({ devices }) {
+export default function DevicesOverview({ devices, onAddDeviceModalOpen }) {
   return (
     <div style={{ display: "flex" }}>
       {devices.map(() => (
-        <div
+        <Button
           style={{
             width: "170px",
             height: "80px",
-            backgroundColor: "green",
+            backgroundColor: "wheat",
             borderRadius: "10px",
             padding: "1px",
             margin: "0px 5px",
           }}
         >
           <p style={{ fontWeight: "600" }}>Device 1</p>
-        </div>
+        </Button>
       ))}
-      <div
+      <Button
         style={{
           width: "170px",
           height: "80px",
-          backgroundColor: 'darksalmon',
           borderRadius: "10px",
           padding: "1px",
+          border: "1px solid black",
           margin: "0px 5px",
         }}
+        onClick={onAddDeviceModalOpen}
       >
-        <p style={{ fontWeight: "600", marginLeft: '40px' }}>New Device +</p>
-      </div>
+        <Plus />
+      </Button>
     </div>
   );
 }
