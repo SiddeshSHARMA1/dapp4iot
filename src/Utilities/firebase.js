@@ -17,6 +17,7 @@ import {
   deleteDoc,
   doc
 } from "firebase/firestore";
+import { getDatabase, ref, onValue } from "firebase/database";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -35,6 +36,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const realTimeDB = getDatabase(app);
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -70,7 +72,7 @@ export const queryServer = async () => {
 
 export const getDevices = async (uid) => {
   const q = query(collection(db, "devices"), where("uid", "==", uid));
-  const {docs} = await getDocs(q);
+  const { docs } = await getDocs(q);
   return new Promise((resolve, reject) => {
     if (docs.length) {
       let ArrayOfData = [];
@@ -84,19 +86,24 @@ export const getDevices = async (uid) => {
 
 export const addDevice = async (deviceMeta) => {
   try {
-    await addDoc(collection(db, "devices"), deviceMeta); 
+    await addDoc(collection(db, "devices"), deviceMeta);
   } catch (error) {
-    console.log('error adding device', error);
+    console.log("error adding device", error);
   }
-}
+};
 
-export const removeDevice = async(deviceId) => {
+export const removeDevice = async (deviceId) => {
   const q = query(collection(db, "devices"), where("deviceId", "==", deviceId));
-  const {docs} = await getDocs(q);
-  if(docs.length){
-    const docRef = doc(db, 'devices', docs[0].id);
+  const { docs } = await getDocs(q);
+  if (docs.length) {
+    const docRef = doc(db, "devices", docs[0].id);
     await deleteDoc(docRef);
   }
-  
-}
+};
 
+const databaseRef = ref(realTimeDB, "");
+export const watchDevice = (id, cb) => {
+  onValue(databaseRef, (snapshot) => {
+    console.log("cb update", snapshot.val());
+  });
+};

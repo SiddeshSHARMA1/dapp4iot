@@ -14,7 +14,7 @@ export default function DashboardOverview({ loggedInUser }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getDevices("O5BxZnVb0NNuVSMO8hALe0kKRmP2").then((res) => setDevices(res));
+    getDevices(loggedInUser.uid).then((res) => setDevices(res));
   }, [refreshCounter]);
 
   function AddDevice(deviceMeta) {
