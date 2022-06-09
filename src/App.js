@@ -16,11 +16,11 @@ function App() {
     <div className="App">
       <Routes>
         {/* WelcomePage */}
-        <Route path="/" element={<LandingpageOverview />} />
+        <Route path="/" element={<LandingpageOverview setLoggedInUser={setLoggedInUser}/>} />
         {/* login Page */}
-        <Route path='/login' element={<LoginOverview />} />
+        <Route path='/login' element={<LoginOverview loggedInUser={loggedInUser}/>} />
         {/* dashboard */}
-        <Route path='/dashboard' element={<DashboardOverview />}/>                                                                                                                                                                                                                                                                                                                                                                         
+        <Route path='/dashboard' element={<DashboardOverview loggedInUser={loggedInUser}/>}/>                                                                                                                                                                                                                                                                                                                                                                         
 
       </Routes>
     </div>

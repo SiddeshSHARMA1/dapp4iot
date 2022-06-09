@@ -1,11 +1,21 @@
 import { Modal } from "@material-ui/core";
 import React, { useState } from "react";
+import { removeDevice } from "../../../Utilities/firebase";
 import DevicesOverview from "../../Devices/DevicesOverview";
 import AddDeviceModal from "../DashboardModal/AddDevice.component";
+import DeviceDetail from "../DashboardModal/DeviceDetail.component";
 import Navbar from "../DashboardNav/Navbar";
 
-export default function DashBoardOverview() {
+export default function DashBoardOverview({
+  devices,
+  currentUser,
+  onDeviceAdd,
+  setRefreshCounter,
+  refreshCounter,
+}) {
   const [isAddDeviceModalOpen, setIsAddDeviceModalOpen] = useState(false);
+  const [isDeviceDetailModalOpen, setIsDeviceDetailModalOpen] = useState(false);
+  const [selectedDevice, setSelectedDevice] = useState({});
 
   return (
     <>
@@ -28,11 +38,12 @@ export default function DashBoardOverview() {
           <div style={{ margin: "15px" }}>
             <h1>Devices</h1>
             <DevicesOverview
-              devices={[
-                { id: 1, name: "d1" },
-                { id: 2, name: "d2" },
-              ]}
+              devices={devices}
               onAddDeviceModalOpen={() => setIsAddDeviceModalOpen(true)}
+              onDeviceSelect={(device) => {
+                setSelectedDevice(device);
+                setIsDeviceDetailModalOpen(true);
+              }}
             />
           </div>
         </div>
@@ -48,7 +59,31 @@ export default function DashBoardOverview() {
           justifyContent: "center",
         }}
       >
-        <AddDeviceModal />
+        <AddDeviceModal
+          setIsAddDeviceModalOpen={setIsAddDeviceModalOpen}
+          currentUser={currentUser}
+          onDeviceAdd={onDeviceAdd}
+        />
+      </Modal>
+      <Modal
+        open={isDeviceDetailModalOpen}
+        onClose={() => setIsDeviceDetailModalOpen(false)}
+        style={{
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <DeviceDetail
+          device={selectedDevice}
+          onDelete={(device) => {
+            removeDevice(device.deviceId);
+            setRefreshCounter(refreshCounter + 1);
+          }}
+          onClose={setIsDeviceDetailModalOpen}
+        />
       </Modal>
     </>
   );
