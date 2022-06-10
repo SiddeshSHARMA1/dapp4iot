@@ -19,10 +19,11 @@ export default function SingleDevice({ eachDevice }) {
         style={{
           width: "170px",
           height: "80px",
-          backgroundColor: 'grey',
           borderRadius: "10px",
           padding: "1px",
           margin: "0px 5px",
+          border: '1px solid black',
+          justifyContent: 'space-evenly'
         }}
       >
         <div style={{height: '20px', width: '20px'}}>

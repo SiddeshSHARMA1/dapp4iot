@@ -23,7 +23,7 @@ export default function LandingpageOverview({ setLoggedInUser }) {
       }}
     >
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <h1 style={{ color: "black", fontFamily: 'arial', fontSize: '48px' }}>DAuth...</h1>
+        <h1 style={{ color: "black", fontFamily: 'poppins', fontSize: '48px' }}>DAuth...</h1>
 
         <Button
           style={{ border: "1px solid black", borderRadius: "10px" }}
@@ -35,7 +35,7 @@ export default function LandingpageOverview({ setLoggedInUser }) {
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png"
           />
           <span
-            style={{ fontFamily: "arial", fontSize: "14px", margin: "4px" }}
+            style={{ fontFamily: "poppins", fontSize: "14px", margin: "4px" }}
           >
             Continue with google
           </span>

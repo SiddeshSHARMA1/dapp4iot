@@ -7,7 +7,7 @@ import SingleDevice from "./SingleDevice.component";
 export default function DevicesOverview({ devices, onAddDeviceModalOpen }) {
   return (
     <div style={{ display: "flex" }}>
-      <Button onClick={() => putDate()}>push</Button>
+      {/* <Button onClick={() => putDate()}>push</Button> */}
       {devices.map((eachDevice) => {
         return <SingleDevice eachDevice={eachDevice} />;
       })}

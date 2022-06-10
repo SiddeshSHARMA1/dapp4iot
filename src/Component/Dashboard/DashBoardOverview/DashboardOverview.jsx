@@ -2,6 +2,8 @@ import { Modal } from "@material-ui/core";
 import React, { useState } from "react";
 import { removeDevice } from "../../../Utilities/firebase";
 import DevicesOverview from "../../Devices/DevicesOverview";
+import UserDrop from "../../UserInfo/UserDrop";
+import UserInfo from "../../UserInfo/UserInfo";
 import AddDeviceModal from "../DashboardModal/AddDevice.component";
 import DeviceDetail from "../DashboardModal/DeviceDetail.component";
 import Navbar from "../DashboardNav/Navbar";
@@ -32,8 +34,9 @@ export default function DashBoardOverview({
           <Navbar />
         </div>
         <div style={{ color: "black", width: "85%", fontWeight: "500" }}>
-          <div style={{ height: "180px" }}>
-            <p>title</p>
+          <div style={{ height: "180px", margin: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <UserInfo currentUser={currentUser}/>
+            <UserDrop currentUser={currentUser}/>
           </div>
           <div style={{ margin: "15px" }}>
             <h1>Devices</h1>
