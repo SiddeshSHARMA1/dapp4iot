@@ -15,7 +15,7 @@ export default function UserInfo({currentUser}) {
       >
         <div style={{marginLeft: '16px'}}>
 
-        <h1 style={{ fontWeight: "400" }}>Hello {currentUser.displayName || ''}!</h1>
+        <h1 style={{ fontWeight: "400" }}>Hello {currentUser.displayName || ''} !</h1>
         <span>Its good to see you again</span>
         </div>
       </div>
