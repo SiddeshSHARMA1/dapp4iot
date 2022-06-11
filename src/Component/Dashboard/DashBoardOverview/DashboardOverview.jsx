@@ -61,6 +61,9 @@ export default function DashBoardOverview({
           alignItems: "center",
           justifyContent: "center",
         }}
+        BackdropProps={{style: {
+          backgroundColor: 'rgb(0,0,0,0)'
+        }}}
       >
         <AddDeviceModal
           setIsAddDeviceModalOpen={setIsAddDeviceModalOpen}
@@ -78,6 +81,9 @@ export default function DashBoardOverview({
           alignItems: "center",
           justifyContent: "center",
         }}
+        BackdropProps={{style: {
+          backgroundColor: 'rgb(0,0,0,0)'
+        }}}
       >
         <DeviceDetail
           device={selectedDevice}

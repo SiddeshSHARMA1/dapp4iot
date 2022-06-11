@@ -12,7 +12,6 @@ export default function AddDeviceModal({
       style={{
         height: "400px",
         width: "20%",
-        backgroundColor: "cornsilk",
         borderRadius: "10px",
         display: "flex",
         flexDirection: "column",
@@ -20,8 +19,10 @@ export default function AddDeviceModal({
         color: "black",
         justifyContent: "space-between",
         alignItems: "center",
+        border: '1px solid black',
+        backdropFilter: 'Blur(10px)'
       }}
-    >
+      >
       <div
         style={{
           display: "flex",
