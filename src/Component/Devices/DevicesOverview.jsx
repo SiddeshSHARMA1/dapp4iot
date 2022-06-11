@@ -4,7 +4,7 @@ import { Plus } from "react-feather";
 import { putDate, watchDevice } from "../../Utilities/firebase";
 import SingleDevice from "./SingleDevice.component";
 
-export default function DevicesOverview({ devices, onAddDeviceModalOpen }) {
+export default function DevicesOverview({ devices, onAddDeviceModalOpen, disableAdd }) {
   return (
     <div style={{ display: "flex" }}>
       {/* <Button onClick={() => putDate()}>push</Button> */}
@@ -19,6 +19,7 @@ export default function DevicesOverview({ devices, onAddDeviceModalOpen }) {
           padding: "1px",
           border: "1px solid black",
           margin: "0px 5px",
+          display: disableAdd ? 'none' : 'block'
         }}
         onClick={onAddDeviceModalOpen}
       >

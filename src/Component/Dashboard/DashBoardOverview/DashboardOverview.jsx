@@ -48,6 +48,18 @@ export default function DashBoardOverview({
                 setIsDeviceDetailModalOpen(true);
               }}
             />
+            <hr style={{border: '1px solid black', backgroundColor: 'black', margin:'40px 0px'}}/>
+            <DevicesOverview
+              devices={devices}
+              onAddDeviceModalOpen={() => setIsAddDeviceModalOpen(true)}
+              onDeviceSelect={(device) => {
+                setSelectedDevice(device);
+                setIsDeviceDetailModalOpen(true);
+              }}
+              disableAdd
+            />
+            
+
           </div>
         </div>
       </div>
