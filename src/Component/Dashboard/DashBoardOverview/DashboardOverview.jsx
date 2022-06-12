@@ -34,12 +34,21 @@ export default function DashBoardOverview({
           <Navbar />
         </div>
         <div style={{ color: "black", width: "85%", fontWeight: "500" }}>
-          <div style={{ height: "180px", margin: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-            <UserInfo currentUser={currentUser}/>
-            <UserDrop currentUser={currentUser}/>
+          <div
+            style={{
+              height: "180px",
+              margin: "15px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "flex-start",
+            }}
+          >
+            <UserInfo currentUser={currentUser} />
+            <UserDrop currentUser={currentUser} />
           </div>
           <div style={{ margin: "15px" }}>
             <h1>Devices</h1>
+            <span style={{ marginLeft: "10px" }}>Verified</span>
             <DevicesOverview
               devices={devices}
               onAddDeviceModalOpen={() => setIsAddDeviceModalOpen(true)}
@@ -48,7 +57,14 @@ export default function DashBoardOverview({
                 setIsDeviceDetailModalOpen(true);
               }}
             />
-            <hr style={{border: '1px solid black', backgroundColor: 'black', margin:'40px 0px'}}/>
+            <hr
+              style={{
+                border: "1px solid black",
+                backgroundColor: "black",
+                margin: "40px 0px",
+              }}
+            />
+            <span style={{ marginLeft: "10px" }}>Unverified</span>
             <DevicesOverview
               devices={devices}
               onAddDeviceModalOpen={() => setIsAddDeviceModalOpen(true)}
@@ -58,8 +74,6 @@ export default function DashBoardOverview({
               }}
               disableAdd
             />
-            
-
           </div>
         </div>
       </div>
@@ -73,9 +87,11 @@ export default function DashBoardOverview({
           alignItems: "center",
           justifyContent: "center",
         }}
-        BackdropProps={{style: {
-          backgroundColor: 'rgb(0,0,0,0)'
-        }}}
+        BackdropProps={{
+          style: {
+            backgroundColor: "rgb(0,0,0,0)",
+          },
+        }}
       >
         <AddDeviceModal
           setIsAddDeviceModalOpen={setIsAddDeviceModalOpen}
@@ -93,9 +109,11 @@ export default function DashBoardOverview({
           alignItems: "center",
           justifyContent: "center",
         }}
-        BackdropProps={{style: {
-          backgroundColor: 'rgb(0,0,0,0)'
-        }}}
+        BackdropProps={{
+          style: {
+            backgroundColor: "rgb(0,0,0,0)",
+          },
+        }}
       >
         <DeviceDetail
           device={selectedDevice}
