@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { watchDevice } from "../../Utilities/firebase";
 import SignalStatus from "../Utils/SignalStatus";
 
-export default function SingleDevice({ eachDevice }) {
+export default function SingleDevice({ eachDevice, onDeviceSelect }) {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -25,6 +25,7 @@ export default function SingleDevice({ eachDevice }) {
           border: '1px solid black',
           justifyContent: 'space-evenly'
         }}
+        onClick={() => onDeviceSelect(eachDevice)}
       >
         <div style={{height: '20px', width: '20px'}}>
           <SignalStatus color={isActive ? 'green' : 'red'}/>

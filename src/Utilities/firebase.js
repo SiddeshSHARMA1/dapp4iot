@@ -16,6 +16,7 @@ import {
   collection,
   deleteDoc,
   doc,
+  
 } from "firebase/firestore";
 import { getDatabase, ref, onValue, set, get, child } from "firebase/database";
 
@@ -106,7 +107,7 @@ export const watchDevice = (id = 788984, cb) => {
 
   setInterval(() => {
     get(databaseRef).then((snapshot) => {
-      const isAct = Date.now() - snapshot.val()[788984].deviceState < 8000;
+      const isAct = Date.now() - snapshot.val()[id].deviceState < 8000;
       if (cb) {
         cb(isAct);
       }
@@ -127,4 +128,18 @@ export const watchDevice = (id = 788984, cb) => {
 export const putDate = (id = 788984) => {
   const databaseRef = ref(realTimeDB, `devices/${id}/deviceState`);
   set(databaseRef, Date.now());
+};
+
+export const getAllUsers = async () => {
+  const docCollection = collection(db, "users");
+  const { docs } = await getDocs(docCollection);
+  return new Promise((resolve, reject) => {
+    if (docs.length) {
+      let ArrayOfData = [];
+      docs.map((data) => ArrayOfData.push(data.data()));
+      resolve(ArrayOfData);
+    } else {
+      resolve([]);
+    }
+  });
 };
