@@ -4,7 +4,7 @@ import DashBoardOverview from "../../Component/Dashboard/DashBoardOverview/Dashb
 import { addDevice, getDevices } from "../../Utilities/firebase";
 
 
-export default function DashboardOverview({ loggedInUser }) {
+export default function DashboardOverview({ loggedInUser, isHLActive }) {
   const [devices, setDevices] = useState([]);
   const [refreshCounter, setRefreshCounter] = useState(0);
 
@@ -55,6 +55,7 @@ export default function DashboardOverview({ loggedInUser }) {
         onDeviceAdd={AddDevice}
         setRefreshCounter={setRefreshCounter}
         refreshCounter={refreshCounter}
+        isHLActive={isHLActive}
       />
     </>
   ) : (

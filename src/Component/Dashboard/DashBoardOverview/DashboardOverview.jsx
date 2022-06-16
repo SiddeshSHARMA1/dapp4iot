@@ -14,6 +14,7 @@ export default function DashBoardOverview({
   onDeviceAdd,
   setRefreshCounter,
   refreshCounter,
+  isHLActive
 }) {
   const [isAddDeviceModalOpen, setIsAddDeviceModalOpen] = useState(false);
   const [isDeviceDetailModalOpen, setIsDeviceDetailModalOpen] = useState(false);
@@ -56,6 +57,7 @@ export default function DashBoardOverview({
                 setSelectedDevice(device);
                 setIsDeviceDetailModalOpen(true);
               }}
+              isHLActive={isHLActive}
             />
             <hr
               style={{
@@ -72,6 +74,7 @@ export default function DashBoardOverview({
                 setSelectedDevice(device);
                 setIsDeviceDetailModalOpen(true);
               }}
+              isHLActive={isHLActive}
               disableAdd
             />
           </div>
@@ -97,6 +100,7 @@ export default function DashBoardOverview({
           setIsAddDeviceModalOpen={setIsAddDeviceModalOpen}
           currentUser={currentUser}
           onDeviceAdd={onDeviceAdd}
+          isHLActive={isHLActive}
         />
       </Modal>
       <Modal
@@ -122,6 +126,7 @@ export default function DashBoardOverview({
             setRefreshCounter(refreshCounter + 1);
           }}
           onClose={setIsDeviceDetailModalOpen}
+          isHLActive={isHLActive}
         />
       </Modal>
     </>

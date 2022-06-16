@@ -4,6 +4,7 @@ import React, { useState } from "react";
 export default function AddDeviceModal({
   onDeviceAdd,
   setIsAddDeviceModalOpen,
+  isHLActive
 }) {
   const [name, setName] = useState("");
   const [id, setId] = useState("");
@@ -35,7 +36,11 @@ export default function AddDeviceModal({
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
+        {isHLActive ? '' : <span>
+          HL is inactive cannot perform chain operations
+          </span>}      
       </div>
+
       <div
         style={{
           display: "flex",
